@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/fragments :: head"></head>
+<body>
+  <header th:replace="fragments/fragments :: header"></header>
+  <main>
+    <h1>Log In to Code Fellowship</h1>
+    <form method="POST" action="/login">
+        <label>Username<input name="username"/></label>
+        <label>Password <input type="password" name="password" /></label>
+        <input type="submit" />
+    </form>
+  </main>
+  <footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

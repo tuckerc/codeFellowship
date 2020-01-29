@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/fragments :: head"></head>
+<body>
+  <header th:replace="fragments/fragments :: header"></header>
+  <main>
+    <h1>Sign Up for Code Fellowship</h1>
+
+    <form action="/signup" method="POST">
+        <label>Username: <input name="username"/> </label>
+        <label>Password: <input type="password" name="password" /></label>
+        <label>First Name: <input name="firstName" /></label>
+        <label>Last name: <input name="lastName" /></label>
+        <label>Date of Birth: <input type="date" name="dateOfBirth" /></label>
+        <label>Bio: <input name="bio" /></label>
+        <input type="submit" />
+    </form>
+  </main>
+  <footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>
