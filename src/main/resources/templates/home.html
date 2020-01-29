@@ -4,7 +4,7 @@
 <body>
   <header th:replace="fragments/fragments :: header"></header>
   <main>
-    <h1>Placeholder for stuff</h1>
+    <h1 th:text="'Hello ' + ${user.firstName}"></h1>
   </main>
   <footer th:replace="fragments/fragments :: footer"></footer>
 </body>

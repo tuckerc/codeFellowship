@@ -5,6 +5,7 @@ import com.chaseatucker.codefellowship.model.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -19,16 +20,16 @@ public class ApplicationController {
   ApplicationUserRepository applicationUserRepository;
 
   @Autowired
-  private PasswordEncoder passwordEncoder;
+  PasswordEncoder passwordEncoder;
 
   @GetMapping("/")
-  public String getHome(Principal p) {
+  public String getHome(Principal p, Model m) {
     if(p != null) {
-      System.out.println(p.getName());
+      m.addAttribute("user", applicationUserRepository.findByUsername(p.getName()));
+      return "home";
     } else {
-      System.out.println("nobody is logged in");
+      return "login";
     }
-    return "home";
   }
 
   @GetMapping("/signup")
@@ -54,4 +55,7 @@ public class ApplicationController {
     applicationUserRepository.save(newUser);
     return new RedirectView("/");
   }
+
+//  @PostMapping("/user/{id}")
+//  public Re
 }
