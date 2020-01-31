@@ -13,10 +13,14 @@
   <header th:fragment="header">
     <h1>Code Fellowship</h1>
     <p>The place where people learning to code can communicate along their journey</p>
-    <nav>
+    <nav th:if=${user}>
       <a href="/">Home</a>
-      <a href="/signup">Sign Up</a>
+      <a th:href="'/user/' + ${user.id}">My Profile</a>
       <a href="/logout">Log Out</a>
+    </nav>
+    <nav th:unless=${user}>
+      <a href="/login">Log In</a>
+      <a href="/signup">Sign Up</a>
     </nav>
   </header>
 

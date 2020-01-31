@@ -6,6 +6,8 @@
   <main>
     <h1>Sign Up for Code Fellowship</h1>
 
+    <h3 th:if="${param.taken}">Sorry, that username was taken. Please try again.</h3>
+
     <form action="/signup" method="POST">
         <label>Username: <input name="username"/> </label>
         <label>Password: <input type="password" name="password" /></label>

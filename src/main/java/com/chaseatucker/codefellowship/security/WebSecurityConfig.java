@@ -16,12 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
-  private UserDetailsServiceImpl userDetailsService;
+  UserDetailsServiceImpl userDetailsService;
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-    return bCryptPasswordEncoder;
+    return new BCryptPasswordEncoder();
   }
 
   @Override
@@ -35,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .cors().disable()
         .csrf().disable()
         .authorizeRequests()
-        .antMatchers("/", "/signup", "/login", "/*.css").permitAll()
+        .antMatchers("/", "/signup", "/login", "*error*", "/css/*", "/images/*").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="fragments/fragments :: head"></head>
+<body>
+  <header th:replace="fragments/fragments :: header"></header>
+  <main>
+    <img src="/images/yoda.jpg" alt="yoda profile pic">
+    <h2 th:text="${user.firstName} + ' ' + ${user.lastName}">Full Name</h2>
+    <p th:text="'DOB: ' + ${user.dateOfBirth}">Date of Birth</p>
+    <p th:text="'Bio: ' + ${user.bio}">User Bio</p>
+    <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
+    <li th:each="post : ${user.posts}">
+      <p th:text="${post.createAt}">Creation Date</p>
+      <p th:text="${post.body}">Post Body</p>
+    </li>
+  </main>
+  <footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

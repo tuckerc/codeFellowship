@@ -4,7 +4,21 @@
 <body>
   <header th:replace="fragments/fragments :: header"></header>
   <main>
-    <h1 th:text="'Hello ' + ${user.firstName}"></h1>
+    <ul th:if=${user}>
+      <form th:action="'/newPost/' + ${user.id}" method="POST">
+        <h3>Create A New Post</h3>
+        <textarea rows="10" cols="60" name="body" placeholder="Post your thoughts here" required></textarea>
+        <input type="submit" value="Submit">
+      </form>
+      <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
+      <li th:each="post : ${user.posts}">
+        <p th:text="${post.createdAt}">Creation Date</p>
+        <p th:text="${post.body}">Post Body</p>
+      </li>
+    </ul>
+    <ul th:unless=${user}>
+      <p>You don't have any posts yet.</p>
+    </ul>
   </main>
   <footer th:replace="fragments/fragments :: footer"></footer>
 </body>
