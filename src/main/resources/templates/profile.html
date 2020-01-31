@@ -10,7 +10,7 @@
     <p th:text="'Bio: ' + ${user.bio}">User Bio</p>
     <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
     <li th:each="post : ${user.posts}">
-      <p th:text="${post.createAt}">Creation Date</p>
+      <p th:text="${post.createdAt}">Creation Date</p>
       <p th:text="${post.body}">Post Body</p>
     </li>
   </main>
