@@ -3,12 +3,10 @@ package com.chaseatucker.codefellowship.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -22,6 +20,10 @@ public class ApplicationUser implements UserDetails {
   private Date dateOfBirth;
   private String bio;
 
+  // a user has many posts
+  @OneToMany(mappedBy = "user")
+  List<Post> posts;
+
   public ApplicationUser() {}
 
   public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String bio) {
@@ -34,7 +36,7 @@ public class ApplicationUser implements UserDetails {
   }
 
   public long getId() {
-    return id;
+    return this.id;
   }
 
   public String getUsername() {
@@ -74,39 +76,23 @@ public class ApplicationUser implements UserDetails {
     return password;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
   public String getFirstName() {
     return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
   }
 
   public String getLastName() {
     return lastName;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
   public Date getDateOfBirth() {
     return dateOfBirth;
-  }
-
-  public void setDateOfBirth(Date dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
   }
 
   public String getBio() {
     return bio;
   }
 
-  public void setBio(String bio) {
-    this.bio = bio;
+  public List<Post> getPosts() {
+    return posts;
   }
 }

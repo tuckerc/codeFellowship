@@ -1,0 +1,143 @@
+body {
+  display: grid;
+  grid-template: auto 1fr auto / 5vw 1fr 5vw;
+  min-height: 100vh;
+}
+
+header {
+  display: grid;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  grid-template: auto auto auto / auto;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+header h1 {
+  grid-row: 1 / 2;
+}
+
+header p {
+  grid-row: 2 / 3;
+}
+
+header nav {
+  grid-row: 3 / 4;
+  margin: 2vh;
+}
+
+nav a {
+  margin: 0.5vh;
+  padding: 0.5vh;
+}
+
+main {
+  display: grid;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-template: auto auto / auto;
+  justify-items: center;
+  align-items: center;
+  margin: 1vh 0;
+  height: 100%;
+}
+
+.user-profile {
+  grid-row: 1 / 2;
+}
+
+.new-post-form {
+  display: grid;
+  grid-row: 1 / 2;
+  grid-template: auto auto auto / auto;
+  width: 95%;
+  height: 100%;
+  padding: 2vh;
+}
+
+.new-post-form h3 {
+  grid-row: 1 / 2;
+  margin: 0.5vh;
+  justify-self: center;
+  align-self: start;
+}
+
+.new-post-form textarea {
+  grid-row: 2 / 3;
+  padding: 0.25vh;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.new-post-form input {
+  grid-row: 3 / 4;
+  justify-self: center;
+  align-self: end;
+}
+
+.user-posts {
+  display: grid;
+  grid-row: 2 / 3;
+  padding: 0.25vh;
+  width: 95%;
+  grid-template: auto auto / auto;
+}
+
+.user-posts h3 {
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: start;
+  margin: 0.5vh;
+}
+
+.user-posts ul {
+  display: flex;
+  grid-row: 2 / 3;
+  justify-self: stretch;
+  align-self: stretch;
+  margin: 0.5vh;
+  padding: 1vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: space-evenly;
+}
+
+.user-posts li {
+  display: grid;
+  grid-template: auto auto / auto;
+  margin: 0.5vh;
+  padding: 1vh;
+}
+
+.user-posts h4 {
+  grid-row: 1 / 2;
+  justify-self: center;
+  align-self: start;
+  margin: 0.25vh;
+}
+
+.user-posts p {
+  grid-row: 2 / 3;
+  justify-self: stretch;
+  align-self: stretch;
+  margin: 0.25vh;
+  padding: 0.25vh;
+}
+
+footer {
+  display: grid;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  grid-template: auto / auto;
+  justify-items: center;
+  align-items: center;
+}
+
+footer p {
+  grid-row: 1 / 2;
+}

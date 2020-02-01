@@ -1,0 +1,63 @@
+header {
+  border-bottom: 0.5vh solid gray;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+header p {
+  font-size: 2em;
+  font-style: italic;
+}
+
+nav a {
+  font-size: 1.5em;
+  border: 0.25vh solid navy;
+  text-decoration: none;
+}
+
+.new-post-form {
+  border: 0.35vh solid gray;
+}
+
+.new-post-form h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 0.25vh solid gray;
+}
+
+.new-post-form textarea {
+  font-size: 1em;
+  border: 0.25vh solid black;
+}
+
+.new-post-form input {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.user-posts h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.user-posts ul {
+  border: 0.35vh solid gray;
+}
+
+.user-posts li {
+  border: 0.25vh solid black;
+}
+
+.user-posts h4 {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.user-posts p {
+  font-size: 1em;
+}

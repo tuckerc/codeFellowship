@@ -10,18 +10,42 @@
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
   </head>
 <body>
+  <!-- Header Fragment -->
   <header th:fragment="header">
     <h1>Code Fellowship</h1>
     <p>The place where people learning to code can communicate along their journey</p>
-    <nav>
+    <nav th:if=${user}>
       <a href="/">Home</a>
-      <a href="/signup">Sign Up</a>
+      <a th:href="'/user/' + ${user.id}">My Profile</a>
       <a href="/logout">Log Out</a>
+    </nav>
+    <nav th:unless=${user}>
+      <a href="/login">Log In</a>
+      <a href="/signup">Sign Up</a>
     </nav>
   </header>
 
+  <!-- New Post From -->
+  <form th:fragment="new-post-form" class="new-post-form" th:action="'/newPost/' + ${user.id}" method="POST">
+    <h3>Create A New Post</h3>
+    <textarea name="body" placeholder="Post your thoughts here" required></textarea>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- User Posts -->
+  <div th:fragment="user-posts" class="user-posts">
+    <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
+    <ul>
+      <li th:each="post : ${user.posts}">
+        <h4 th:text="${post.createdAt}">Creation Date</h4>
+        <p th:text="${post.body}">Post Body</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Footer Fragment -->
   <footer th:fragment="footer">
-    <p>&copy; 2020 codefellowship.com<p></p>
+    <p>&copy; 2020 codefellowship.com</p>
   </footer>
 </body>
 </html>
