@@ -1,3 +1,7 @@
+body {
+  text-align: center;
+}
+
 header {
   border-bottom: 0.5vh solid gray;
 }
@@ -14,12 +18,16 @@ header p {
 
 nav a {
   font-size: 1.5em;
-  border: 0.25vh solid navy;
+  border: 0.25vh solid black;
+  border-radius: 25% 10%;
   text-decoration: none;
+  background-color: lightgray;
+  color: black;
 }
 
 .new-post-form {
   border: 0.35vh solid gray;
+  background-color: lightgray;
 }
 
 .new-post-form h3 {
@@ -46,10 +54,12 @@ nav a {
 
 .user-posts ul {
   border: 0.35vh solid gray;
+  background-color: lightgray;
 }
 
 .user-posts li {
   border: 0.25vh solid black;
+  background-color: white;
 }
 
 .user-posts h4 {
@@ -60,4 +70,45 @@ nav a {
 
 .user-posts p {
   font-size: 1em;
+}
+
+.user-profile {
+  border: 0.35vh solid gray;
+  background-color: lightgray; 
+}
+
+.user-profile img {
+  border: 0.25vh solid black;
+}
+
+.user-profile h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 0.25vh solid gray;
+}
+
+#dob {
+  font-size: 1.2em;
+}
+
+.user-profile h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  border-bottom: 0.25vh solid gray;
+}
+
+#bio {
+  font-size: 1.25em;
+  border: 0.25vh solid black;
+  background-color: white;
+}
+
+@media (max-width: 425px) {
+  header p {
+    font-size: 1em;
+  }
+
+  nav a {
+    font-size: 1.2em;
+  }
 }

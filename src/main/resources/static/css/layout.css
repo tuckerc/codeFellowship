@@ -31,7 +31,7 @@ header nav {
 
 nav a {
   margin: 0.5vh;
-  padding: 0.5vh;
+  padding: 1vh;
 }
 
 main {
@@ -43,10 +43,6 @@ main {
   align-items: center;
   margin: 1vh 0;
   height: 100%;
-}
-
-.user-profile {
-  grid-row: 1 / 2;
 }
 
 .new-post-form {
@@ -129,6 +125,44 @@ main {
   padding: 0.25vh;
 }
 
+.user-profile {
+  display: grid;
+  grid-row: 1 / 2;
+  grid-template: auto auto auto auto auto / auto;
+  width: 95%;
+  height: 100%;
+  padding: 2vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-profile img {
+  grid-row: 1 / 2;
+  margin: 1vh;
+  padding: 1vh;
+}
+
+.user-profile h2 {
+  grid-row: 2 / 3;
+  margin: 0.5vh;
+}
+
+#dob {
+  grid-row: 3 / 4;
+  margin: 0.5vh;
+}
+
+.user-profile h3 {
+  grid-row: 4 / 5;
+  margin: 0.5vh;
+}
+
+#bio {
+  grid-row: 5 / 6;
+  margin: 0.5vh;
+  padding: 0.5vh;
+}
+
 footer {
   display: grid;
   grid-row: 3 / 4;
@@ -140,4 +174,10 @@ footer {
 
 footer p {
   grid-row: 1 / 2;
+}
+
+@media (max-width: 425px) {
+  nav a {
+    padding: 0.5vh;
+  }
 }

@@ -12,8 +12,9 @@
     <div class="user-profile">
       <img src="/images/yoda.jpg" alt="yoda profile pic">
       <h2 th:text="${user.firstName} + ' ' + ${user.lastName}">Full Name</h2>
-      <p th:text="'DOB: ' + ${user.dateOfBirth}">Date of Birth</p>
-      <p th:text="'Bio: ' + ${user.bio}">User Bio</p>
+      <p id="dob" th:text="'DOB: ' + ${user.dateOfBirth}">Date of Birth</p>
+      <h3>Bio</h3>
+      <p id="bio" th:text="${user.bio}">User Bio</p>
     </div>
 
     <!-- User Posts -->
@@ -23,6 +24,6 @@
 
   <!-- Footer -->
   <footer th:replace="fragments/fragments :: footer"></footer>
-  
+
 </body>
 </html>
