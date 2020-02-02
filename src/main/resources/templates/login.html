@@ -4,12 +4,17 @@
 <body>
   <header th:replace="fragments/fragments :: header"></header>
   <main>
-    <h1>Log In to Code Fellowship</h1>
-    <form method="POST" action="/login">
-        <label>Username<input name="username"/></label>
-        <label>Password <input type="password" name="password" /></label>
-        <input type="submit" />
+    
+    <form id="login-form" method="POST" action="/login">
+      <h2 id="login-header">Log In To Code Fellowship</h2>
+      <label id="login-username-label" for="username">Username:</label>
+      <input id="login-username" name="username"/>
+      <label id="login-password-label" for="password">Password:</label>
+      <input id="login-password" type="password" name="password" />
+      <input id="login-submit" type="submit" />
     </form>
+
+    <div th:replace="fragments/fragments :: site-info"></div>
   </main>
   <footer th:replace="fragments/fragments :: footer"></footer>
 </body>

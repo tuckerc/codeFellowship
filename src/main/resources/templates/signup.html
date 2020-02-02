@@ -4,19 +4,27 @@
 <body>
   <header th:replace="fragments/fragments :: header"></header>
   <main>
-    <h1>Sign Up for Code Fellowship</h1>
-
-    <h3 th:if="${param.taken}">Sorry, that username was taken. Please try again.</h3>
-
-    <form action="/signup" method="POST">
-        <label>Username: <input name="username"/> </label>
-        <label>Password: <input type="password" name="password" /></label>
-        <label>First Name: <input name="firstName" /></label>
-        <label>Last name: <input name="lastName" /></label>
-        <label>Date of Birth: <input type="date" name="dateOfBirth" /></label>
-        <label>Bio: <input name="bio" /></label>
-        <input type="submit" />
+    
+    <form id="signup-form" action="/signup" method="POST">
+      <h2 id="signup-header">Sign Up for Code Fellowship</h2>  
+      <label id="signup-username-label" for="username">Username:</label>
+      <input id="signup-username" name="username"/>
+      <label id="signup-password-label" for="password">Password:</label>
+      <input id="signup-password" type="password" name="password"/>
+      <label id="signup-firstname-label" for="firstName">First Name:</label>
+      <input id="signup-firstname" name="firstName"/>
+      <label id="signup-lastname-label" for="lastName">Last name:</label>
+      <input id="signup-lastname" name="lastName" />
+      <label id="signup-dob-label" for="dateOfBirth">Date of Birth:</label>
+      <input id="signup-dob" type="date" name="dateOfBirth" />
+      <label id="signup-bio-label" for="bio">Bio:</label>
+      <textarea id="signup-bio" name="bio" rows="5"></textarea>
+      <input id="signup-submit" type="submit" />
+      <h3 th:if="${param.taken}">Sorry, that username was taken. Please try again.</h3>
     </form>
+
+    <div th:replace="fragments/fragments :: site-info"></div>
+
   </main>
   <footer th:replace="fragments/fragments :: footer"></footer>
 </body>
