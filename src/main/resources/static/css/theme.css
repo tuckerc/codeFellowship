@@ -25,12 +25,27 @@ nav a {
   color: black;
 }
 
-.new-post-form {
+#login-form label, #login-form input,
+#signup-form label, #signup-form input {
+  font-size: 1.2em;
+}
+
+.new-post-form, #login-form,
+#signup-form {
   border: 0.35vh solid gray;
   background-color: lightgray;
 }
 
-.new-post-form h3 {
+.site-info {
+  border: 0.35vh solid gray;
+}
+
+.site-info p {
+  font-size: 1.3em;
+}
+
+.new-post-form h3,
+.site-info h3 {
   font-size: 1.5em;
   font-weight: bold;
   border-bottom: 0.25vh solid gray;
@@ -81,7 +96,8 @@ nav a {
   border: 0.25vh solid black;
 }
 
-.user-profile h2 {
+.user-profile h2, #login-header,
+#signup-header {
   font-size: 1.5em;
   font-weight: bold;
   border-bottom: 0.25vh solid gray;
