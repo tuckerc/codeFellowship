@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -19,6 +20,18 @@ public class ApplicationUser implements UserDetails {
   private String lastName;
   private Date dateOfBirth;
   private String bio;
+
+  // relationship to allow users to follow other users
+  @ManyToMany
+  @JoinTable (
+      name="followers",
+      joinColumns = { @JoinColumn(name = "follower_id")},
+      inverseJoinColumns = { @JoinColumn(name = "followee_id")}
+  )
+  List<ApplicationUser> usersThatIFollow;
+
+  @ManyToMany(mappedBy = "usersThatIFollow")
+  List<ApplicationUser> usersThatFollowMe;
 
   // a user has many posts
   @OneToMany(mappedBy = "user")
@@ -63,10 +76,6 @@ public class ApplicationUser implements UserDetails {
     return true;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return null;
@@ -94,5 +103,13 @@ public class ApplicationUser implements UserDetails {
 
   public List<Post> getPosts() {
     return posts;
+  }
+
+  public List<ApplicationUser> getUsersThatIFollow() {
+    return usersThatIFollow;
+  }
+
+  public List<ApplicationUser> getUsersThatFollowMe() {
+    return usersThatFollowMe;
   }
 }
