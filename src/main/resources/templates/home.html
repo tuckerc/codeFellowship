@@ -10,9 +10,15 @@
 
     <!-- New Post Form -->
     <form th:replace="fragments/fragments :: new-post-form"></form>
+
+    <!-- Add New Connection -->
+    <div th:replace="fragments/fragments :: user-list"></div>
+
+    <!-- Followed Users -->
+    <div th:replace="fragments/fragments :: followed-users"></div>
     
     <!-- User Posts -->
-    <ul th:replace="fragments/fragments :: user-posts"></ul>
+    <ul th:replace="fragments/fragments :: user-posts-home"></ul>
 
   </main>
 

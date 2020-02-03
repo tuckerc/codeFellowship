@@ -31,7 +31,8 @@ nav a {
 }
 
 .new-post-form, #login-form,
-#signup-form {
+#signup-form, .user-list-container,
+.followed-users-container {
   border: 0.35vh solid gray;
   background-color: lightgray;
 }
@@ -61,29 +62,48 @@ nav a {
   font-weight: bold;
 }
 
-.user-posts h3 {
+.user-posts-home h3,
+.user-posts-profile h3,
+.user-list-container h3,
+.followed-users-container h3 {
   font-size: 1.3em;
   font-weight: bold;
   text-decoration: underline;
 }
 
-.user-posts ul {
+.user-posts-home ul,
+.user-posts-profile ul {
   border: 0.35vh solid gray;
   background-color: lightgray;
 }
 
-.user-posts li {
+.user-posts-home li,
+.user-posts-profile li,
+.user-list-item,
+.followed-user {
   border: 0.25vh solid black;
   background-color: white;
 }
 
-.user-posts h4 {
+.user-posts-home h4,
+.user-posts-profile h4,
+.user-list-container h4,
+.followed-users-container h4 {
   font-size: 1.1em;
   font-weight: bold;
   text-decoration: underline;
 }
 
-.user-posts p {
+.user-list-container h5,
+.followed-users-container h5 {
+  font-size: 1.1em;
+  font-weight: normal;
+}
+
+.user-posts-home p,
+.user-posts-profile p,
+.user-list-container p,
+.followed-users-container p {
   font-size: 1em;
 }
 

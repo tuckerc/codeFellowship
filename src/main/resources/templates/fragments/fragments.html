@@ -32,8 +32,49 @@
     <input type="submit" value="Submit">
   </form>
 
+  <!-- Follow New User -->
+  <div th:fragment="user-list" class="user-list-container">
+    <h3>Make A New Connection!</h3>
+    <div class="user-list">
+      <div th:if="${not #lists.contains(user.usersThatIFollow, connection)}" th:each="connection : ${allUsers}" class="user-list-item">
+        <a th:href="'/user/' + ${connection.id}"><h4 th:text="${connection.username}">Connection Username</h4></a>
+        <h5 th:each="post, iterStat : ${connection.posts}" th:if="${not #lists.isEmpty(connection.posts) and iterStat.index >= iterStat.size-1}" th:text="${connection.posts[iterStat.index].createdAt}">Last Created Date</h5>
+        <p th:each="post, iterStat : ${connection.posts}" th:if="${not #lists.isEmpty(connection.posts) and iterStat.index >= iterStat.size-1}" th:text="${connection.posts[iterStat.index].body}">Last Post</p>
+        <form th:action="'/user/' + ${user.id} + '/connect/' + ${connection.id}" method="POST">
+          <input type="submit" value="Connect">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Users I Follow -->
+  <div th:fragment="followed-users" class="followed-users-container">
+    <h3 th:text="${user.firstName} + '\'s Connections'"></h3>
+    <div class="followed-users-list">
+      <div th:if="${#lists.contains(user.usersThatIFollow, connection)}" th:each="connection : ${allUsers}" class="followed-user">
+        <a th:href="'/user/' + ${connection.id}"><h4 th:text="${connection.username}">Connection Username</h4></a>
+        <h5 th:each="post, iterStat : ${connection.posts}" th:if="${not #lists.isEmpty(connection.posts) and iterStat.index >= iterStat.size-1}" th:text="${connection.posts[iterStat.index].createdAt}">Last Created Date</h5>
+        <p th:each="post, iterStat : ${connection.posts}" th:if="${not #lists.isEmpty(connection.posts) and iterStat.index >= iterStat.size-1}" th:text="${connection.posts[iterStat.index].body}">Last Post</p>
+        <form th:action="'/user/' + ${user.id} + '/disconnect/' + ${connection.id}" method="POST">
+          <input type="submit" value="Stop Following">
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- User Posts -->
-  <div th:fragment="user-posts" class="user-posts">
+  <div th:fragment="user-posts-home" class="user-posts-home">
+    <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
+    <ul>
+      <li th:each="post : ${user.posts}">
+        <h4 th:text="${post.createdAt}">Creation Date</h4>
+        <p th:text="${post.body}">Post Body</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Profile Posts -->
+  <div th:fragment="user-posts-profile" class="user-posts-profile">
     <h3 th:text="${user.firstName} + '\'s Posts'">User's Posts</h3>
     <ul>
       <li th:each="post : ${user.posts}">

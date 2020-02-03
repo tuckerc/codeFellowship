@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Vector;
 
 @Controller
 public class ApplicationController {
@@ -36,6 +40,9 @@ public class ApplicationController {
   public String getHome(Principal p, Model m) {
     if(p != null) {
       m.addAttribute("user", applicationUserRepository.findByUsername(p.getName()));
+      List<ApplicationUser> allUsers = new Vector<>(applicationUserRepository.findAll());
+      allUsers.remove(applicationUserRepository.findByUsername(p.getName()));
+      m.addAttribute("allUsers", allUsers);
       return "home";
     } else {
       return "login";
@@ -53,8 +60,12 @@ public class ApplicationController {
   }
 
   @GetMapping("/user/{id}")
-  public String getProfile(Principal p, Model m) {
-    m.addAttribute("user", applicationUserRepository.findByUsername(p.getName()));
+  public String getProfile(@PathVariable long id, Principal p, Model m) {
+    // add the logged in user to the model
+    m.addAttribute("user", applicationUserRepository.getOne(id));
+    Vector<ApplicationUser> allUsers = new Vector<>(applicationUserRepository.findAll());
+    allUsers.remove(applicationUserRepository.findByUsername(p.getName()));
+    m.addAttribute("allUsers", allUsers);
     return "profile";
   }
 
@@ -80,6 +91,24 @@ public class ApplicationController {
     ApplicationUser user = applicationUserRepository.getOne(Long.parseLong(id));
     Post newPost = new Post(body, user);
     postRepository.save(newPost);
+    return new RedirectView("/");
+  }
+
+  @PostMapping("/user/{userId}/connect/{connectionId}")
+  public RedirectView makeConnection(@PathVariable long userId, @PathVariable long connectionId) {
+    ApplicationUser connection = applicationUserRepository.getOne(connectionId);
+    ApplicationUser user = applicationUserRepository.getOne(userId);
+    user.getUsersThatIFollow().add(connection);
+    applicationUserRepository.save(user);
+    return new RedirectView("/");
+  }
+
+  @PostMapping("/user/{userId}/disconnect/{connectionId}")
+  public RedirectView removeConnection(@PathVariable long userId, @PathVariable long connectionId) {
+    ApplicationUser connection = applicationUserRepository.getOne(connectionId);
+    ApplicationUser user = applicationUserRepository.getOne(userId);
+    user.getUsersThatIFollow().remove(connection);
+    applicationUserRepository.save(user);
     return new RedirectView("/");
   }
 }
