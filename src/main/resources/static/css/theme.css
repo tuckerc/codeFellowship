@@ -31,8 +31,8 @@ nav a {
 }
 
 .new-post-form, #login-form,
-#signup-form, .user-list-container,
-.followed-users-container {
+#signup-form, .user-list,
+.followed-users-list {
   border: 0.35vh solid gray;
   background-color: lightgray;
 }
@@ -45,7 +45,7 @@ nav a {
   font-size: 1.3em;
 }
 
-.new-post-form h3,
+#new-post h3,
 .site-info h3 {
   font-size: 1.5em;
   font-weight: bold;
@@ -66,7 +66,7 @@ nav a {
 .user-posts-profile h3,
 .user-list-container h3,
 .followed-users-container h3 {
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: bold;
   text-decoration: underline;
 }

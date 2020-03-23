@@ -7,17 +7,17 @@
     
     <form id="signup-form" action="/signup" method="POST">
       <h2 id="signup-header">Sign Up for Code Fellowship</h2>  
-      <label id="signup-username-label" for="username">Username:</label>
+      <label id="signup-username-label" for="signup-username">Username:</label>
       <input id="signup-username" name="username"/>
-      <label id="signup-password-label" for="password">Password:</label>
+      <label id="signup-password-label" for="signup-password">Password:</label>
       <input id="signup-password" type="password" name="password"/>
-      <label id="signup-firstname-label" for="firstName">First Name:</label>
+      <label id="signup-firstname-label" for="signup-firstName">First Name:</label>
       <input id="signup-firstname" name="firstName"/>
-      <label id="signup-lastname-label" for="lastName">Last name:</label>
+      <label id="signup-lastname-label" for="signup-lastName">Last name:</label>
       <input id="signup-lastname" name="lastName" />
-      <label id="signup-dob-label" for="dateOfBirth">Date of Birth:</label>
+      <label id="signup-dob-label" for="signup-dob">Date of Birth:</label>
       <input id="signup-dob" type="date" name="dateOfBirth" />
-      <label id="signup-bio-label" for="bio">Bio:</label>
+      <label id="signup-bio-label" for="signup-bio">Bio:</label>
       <textarea id="signup-bio" name="bio" rows="5"></textarea>
       <input id="signup-submit" type="submit" />
       <h3 th:if="${param.taken}">Sorry, that username was taken. Please try again.</h3>
